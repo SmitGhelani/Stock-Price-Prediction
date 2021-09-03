@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock title %}
+{% block title1 %}Contact{% endblock title1 %}
+{% block title2 %}Contact{% endblock title2 %}
+{% block current_contact %}active{% endblock current_contact %}
+{% block body %}
+    <div class="container my-5" id="id1" style="width: 50%; background-color:white;  ">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name1">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="gender1">Age</label>
+                <select class="form-control" id="age" name="age">
+                    <option>10-20</option>
+                    <option>20-40</option>
+                    <option>40-50</option>
+                    <option>>50</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email id">
+            </div>
+
+            <div class="form-group">
+                <label for="mobino1">Mobile number</label>
+                <input type="text" class="form-control" id="mobino" name="mobino" placeholder="Enter Your Mobile Number">
+            </div>
+
+            <div class="form-group">
+                <label for="address1">Address</label>
+                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock body %}
