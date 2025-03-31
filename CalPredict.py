@@ -3,6 +3,7 @@ import datetime
 import Graph as plt
 from PredictionAlgorithm import LinearRegression
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 from sklearn import preprocessing
 from StockData import StockData as stkdt
 import pandas as pd
@@ -28,11 +29,13 @@ def calPred(stkname):
     y = np.array(df['Prediction'])
     y = y[:-pred_len]
 
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3)
 
-    clf = LinearRegression(learning_rate=1)
+    clf = LinearRegression(learning_rate=0.01, n_iters=1000)
     clf.train(x_train, y_train)
 
+    y_pred = clf.predict(x_test)
+    print("accurecy:",mean_squared_error(y_test, y_pred))
     price_prediction = clf.predict(x_pred)
 
     df.dropna(inplace=True)

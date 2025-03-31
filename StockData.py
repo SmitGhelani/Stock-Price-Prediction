@@ -10,7 +10,6 @@ class StockData:
         # print(today, start)
         GetStockInformation = yahooFinance.Ticker(stockName)
         stockData = GetStockInformation.history(period="2y")
-        print(stockData)
         return stockData
 
     def storeData(dataFrame):
