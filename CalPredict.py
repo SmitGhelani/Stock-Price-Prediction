@@ -35,7 +35,13 @@ def calPred(stkname):
     clf.train(x_train, y_train)
 
     y_pred = clf.predict(x_test)
-    print("accurecy:",mean_squared_error(y_test, y_pred))
+    errors = abs(y_pred - y_test)
+    print('Average absolute error:', round(np.mean(errors), 2), 'degrees.')
+    mape = 100 * (errors / y_test)
+    accuracy = 100 - np.mean(mape)
+    print('Accuracy:', round(accuracy, 2), '%.')
+    accuracy = round(accuracy, 2)
+    
     price_prediction = clf.predict(x_pred)
 
     df.dropna(inplace=True)
